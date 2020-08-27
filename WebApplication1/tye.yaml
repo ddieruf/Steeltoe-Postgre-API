@@ -1,0 +1,30 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: webapplication1
+services:
+- name: zipkin
+  image: openzipkin/zipkin
+  bindings:
+    - port: 9411
+
+- name: postgre
+  image: postgres:10.8-alpine
+  bindings:
+    - port: 5432
+  env:
+  - name: POSTGRES_PASSWORD
+    value: "IheartSteeltoe1"
+  - name: POSTGRES_USER
+    value: "steeltoe"
+
+#- name: bootadmin
+#  image: slydeveloper/spring-boot-admin
+#  bindings:
+#    - port: 1111
+#  env:
+#    - name: SPRING_BOOT_ADMIN_SECURITY_ENABLED
+#      value: false
